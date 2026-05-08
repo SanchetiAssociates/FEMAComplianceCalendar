@@ -1,1279 +1,148 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FEMA 1999 — Comprehensive Compliance Calendar | S S Sancheti & Associates</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Mono:wght@300;400;500&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --navy: #0a1628;
-    --navy-mid: #0f2240;
-    --navy-light: #1a3a6e;
-    --gold: #c9a84c;
-    --gold-light: #e4c97a;
-    --gold-pale: #f5e9c8;
-    --cream: #faf7f2;
-    --red: #c0392b;
-    --green: #1a6b3c;
-    --blue-acc: #2980b9;
-    --text-dark: #1c2b3a;
-    --text-mid: #4a5568;
-    --text-light: #718096;
-    --border: #dde3ef;
-  }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    font-family: 'Crimson Pro', Georgia, serif;
-    background: var(--cream);
-    color: var(--text-dark);
-    font-size: 15px;
-    line-height: 1.65;
-  }
-
-  /* ── HEADER ── */
-  header {
-    background: var(--navy);
-    color: #fff;
-    padding: 40px 60px 32px;
-    border-bottom: 4px solid var(--gold);
-    position: relative;
-    overflow: hidden;
-  }
-  header::before {
-    content: '';
-    position: absolute; top: -80px; right: -60px;
-    width: 320px; height: 320px;
-    border: 60px solid rgba(201,168,76,0.1);
-    border-radius: 50%;
-  }
-  header::after {
-    content: '';
-    position: absolute; bottom: -40px; left: 30%;
-    width: 180px; height: 180px;
-    border: 40px solid rgba(201,168,76,0.06);
-    border-radius: 50%;
-  }
-  .header-firm {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 10px;
-  }
-  header h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 34px;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-    line-height: 1.2;
-    color: #fff;
-  }
-  header h1 span { color: var(--gold); }
-  .header-sub {
-    font-size: 13px;
-    color: rgba(255,255,255,0.6);
-    margin-top: 8px;
-    font-family: 'DM Mono', monospace;
-    letter-spacing: 1px;
-  }
-  .header-badges {
-    display: flex; gap: 12px; margin-top: 18px; flex-wrap: wrap;
-  }
-  .badge {
-    font-family: 'DM Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 5px 14px;
-    border: 1px solid rgba(201,168,76,0.4);
-    color: var(--gold-light);
-    border-radius: 2px;
-  }
-
-  /* ── NAV TABS ── */
-  .tab-nav {
-    background: var(--navy-mid);
-    display: flex; gap: 0;
-    overflow-x: auto;
-    border-bottom: 2px solid var(--gold);
-  }
-  .tab-btn {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 14px 22px;
-    color: rgba(255,255,255,0.5);
-    cursor: pointer;
-    border: none;
-    background: none;
-    white-space: nowrap;
-    border-bottom: 3px solid transparent;
-    transition: all 0.2s;
-    margin-bottom: -2px;
-  }
-  .tab-btn:hover { color: var(--gold-light); }
-  .tab-btn.active {
-    color: var(--gold);
-    border-bottom-color: var(--gold);
-    background: rgba(201,168,76,0.07);
-  }
-
-  /* ── LAYOUT ── */
-  .container { max-width: 1280px; margin: 0 auto; padding: 36px 50px 60px; }
-
-  .tab-panel { display: none; }
-  .tab-panel.active { display: block; }
-
-  /* ── SECTION TITLES ── */
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    font-weight: 600;
-    color: var(--navy);
-    margin: 36px 0 8px;
-    padding-bottom: 8px;
-    border-bottom: 2px solid var(--gold);
-    display: flex; align-items: center; gap: 10px;
-  }
-  .section-title .icon {
-    width: 28px; height: 28px;
-    background: var(--navy);
-    color: var(--gold);
-    border-radius: 4px;
-    display: inline-flex; align-items: center; justify-content: center;
-    font-size: 14px; flex-shrink: 0;
-  }
-  .section-desc {
-    font-size: 13px; color: var(--text-light);
-    font-style: italic; margin-bottom: 20px;
-    font-family: 'Crimson Pro', serif;
-  }
-
-  /* ── TABLE ── */
-  .comp-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13.5px;
-    margin-bottom: 12px;
-    box-shadow: 0 1px 8px rgba(10,22,40,0.07);
-    border-radius: 6px;
-    overflow: hidden;
-  }
-  .comp-table thead tr {
-    background: var(--navy);
-    color: var(--gold-light);
-  }
-  .comp-table thead th {
-    font-family: 'DM Mono', monospace;
-    font-size: 9.5px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    padding: 12px 14px;
-    text-align: left;
-    font-weight: 500;
-  }
-  .comp-table tbody tr {
-    border-bottom: 1px solid var(--border);
-    background: #fff;
-    transition: background 0.15s;
-  }
-  .comp-table tbody tr:hover { background: #f5f8ff; }
-  .comp-table tbody tr:nth-child(even) { background: #fafcff; }
-  .comp-table tbody tr:nth-child(even):hover { background: #f0f5ff; }
-  .comp-table td {
-    padding: 11px 14px;
-    vertical-align: top;
-    line-height: 1.55;
-  }
-  .comp-table td:first-child { font-weight: 600; color: var(--navy); }
-
-  /* pills */
-  .pill {
-    display: inline-block;
-    font-family: 'DM Mono', monospace;
-    font-size: 9px; letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 3px 9px; border-radius: 20px;
-    font-weight: 500;
-  }
-  .pill-red    { background: #fdecea; color: var(--red); border: 1px solid #f5c6c2; }
-  .pill-green  { background: #e6f4ed; color: var(--green); border: 1px solid #a8d5bc; }
-  .pill-blue   { background: #e8f4fd; color: #1560a0; border: 1px solid #9ac8ed; }
-  .pill-gold   { background: #fdf5e4; color: #7d5f10; border: 1px solid #e0c87a; }
-  .pill-purple { background: #f3eeff; color: #5b2fa1; border: 1px solid #c5a9f0; }
-  .pill-grey   { background: #f0f0f0; color: #555; border: 1px solid #ccc; }
-
-  /* entity tags */
-  .entity-tag {
-    display: inline-block;
-    font-family: 'DM Mono', monospace;
-    font-size: 9px; letter-spacing: 0.5px;
-    padding: 2px 7px; border-radius: 3px;
-    margin: 1px 2px 1px 0;
-    text-transform: uppercase;
-  }
-  .et-co   { background:#e4f0ff; color:#1040a0; }
-  .et-llp  { background:#fff3e4; color:#a04010; }
-  .et-ind  { background:#e6f9ee; color:#0a6e30; }
-  .et-nri  { background:#fbeef9; color:#7a1080; }
-  .et-bank { background:#fff8e0; color:#806010; }
-  .et-all  { background:#1a3a6e; color:#fff; }
-
-  /* ── ALERT BOX ── */
-  .alert {
-    border-radius: 6px;
-    padding: 14px 18px;
-    margin: 16px 0;
-    font-size: 13.5px;
-    display: flex; gap: 12px; align-items: flex-start;
-  }
-  .alert-warn { background: #fffbeb; border-left: 4px solid var(--gold); }
-  .alert-info { background: #eff6ff; border-left: 4px solid #3b82f6; }
-  .alert-danger { background: #fef2f2; border-left: 4px solid var(--red); }
-  .alert-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
-
-  /* ── KEY DATES GRID ── */
-  .dates-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 14px;
-    margin: 20px 0;
-  }
-  .date-card {
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 16px 18px;
-    border-left: 4px solid var(--navy-light);
-    transition: transform 0.15s, box-shadow 0.15s;
-  }
-  .date-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(10,22,40,0.1); }
-  .date-card.urgent { border-left-color: var(--red); }
-  .date-card.periodic { border-left-color: var(--gold); }
-  .date-card.annual { border-left-color: var(--green); }
-  .date-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 18px; font-weight: 500;
-    color: var(--navy);
-  }
-  .date-form {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px; letter-spacing: 1px;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 4px;
-  }
-  .date-desc {
-    font-size: 12.5px;
-    color: var(--text-mid);
-    margin-top: 4px;
-    line-height: 1.45;
-  }
-
-  /* ── PENALTY TABLE ── */
-  .penalty-box {
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-    margin: 20px 0;
-  }
-  .penalty-header {
-    background: var(--red);
-    color: #fff;
-    padding: 12px 18px;
-    font-family: 'Playfair Display', serif;
-    font-size: 16px;
-    font-weight: 600;
-  }
-
-  /* ── LSF MATRIX ── */
-  .lsf-matrix {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 0;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    overflow: hidden;
-    margin: 16px 0;
-  }
-  .lsf-cell {
-    padding: 12px 16px;
-    border-right: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    font-size: 13px;
-  }
-  .lsf-cell:nth-child(3n) { border-right: none; }
-  .lsf-head {
-    background: var(--navy);
-    color: var(--gold-light);
-    font-family: 'DM Mono', monospace;
-    font-size: 9px; letter-spacing: 1.5px;
-    text-transform: uppercase;
-    font-weight: 500;
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    background: var(--navy);
-    color: rgba(255,255,255,0.5);
-    text-align: center;
-    padding: 22px 40px;
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 1px;
-    border-top: 2px solid var(--gold);
-  }
-  footer span { color: var(--gold); }
-
-  /* print */
-  @media print {
-    .tab-nav { display: none; }
-    .tab-panel { display: block !important; page-break-before: always; }
-    header { background: var(--navy) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  }
-
-  @media(max-width:700px){
-    header { padding: 24px 20px 20px; }
-    .container { padding: 20px 14px 40px; }
-    header h1 { font-size: 22px; }
-    .dates-grid { grid-template-columns: 1fr 1fr; }
-    .lsf-matrix { grid-template-columns: 1fr; }
-    .lsf-cell:nth-child(3n) { border-right: 1px solid var(--border); }
-  }
-</style>
-</head>
-<body>
-
-<header>
-  <div class="header-firm">S S Sancheti &amp; Associates, Chartered Accountants &nbsp;·&nbsp; FEMA Advisory</div>
-  <h1>FEMA 1999 — <span>Comprehensive Compliance Calendar</span></h1>
-  <div class="header-sub">Foreign Exchange Management Act, 1999 &nbsp;|&nbsp; RBI Master Directions &nbsp;|&nbsp; AY 2025-26 &amp; Beyond</div>
-  <div class="header-badges">
-    <div class="badge">FDI Reporting</div>
-    <div class="badge">ODI / APR</div>
-    <div class="badge">ECB Returns</div>
-    <div class="badge">Export / Import</div>
-    <div class="badge">LRS / NRI</div>
-    <div class="badge">FEMA 2026 Updates</div>
-  </div>
-</header>
-
-<!-- NAV TABS -->
-<div class="tab-nav">
-  <button class="tab-btn active" onclick="switchTab('overview',this)">Overview &amp; Key Dates</button>
-  <button class="tab-btn" onclick="switchTab('fdi',this)">FDI Compliances</button>
-  <button class="tab-btn" onclick="switchTab('odi',this)">ODI / Overseas Inv.</button>
-  <button class="tab-btn" onclick="switchTab('ecb',this)">ECB</button>
-  <button class="tab-btn" onclick="switchTab('export',this)">Export / Import</button>
-  <button class="tab-btn" onclick="switchTab('lrs',this)">LRS / NRI / Remittance</button>
-  <button class="tab-btn" onclick="switchTab('penalty',this)">Penalties &amp; LSF</button>
-  <button class="tab-btn" onclick="switchTab('updates',this)">2025-26 Updates</button>
-</div>
-
-<!-- ═══════════════════════════════════════ OVERVIEW ═══════════════════════════════════════ -->
-<div id="tab-overview" class="tab-panel active">
-<div class="container">
-
-  <div class="section-title"><span class="icon">📅</span> Master Compliance Calendar — Key Dates at a Glance</div>
-  <p class="section-desc">All deadlines under FEMA 1999, RBI Master Directions, and FEM Regulations for FY 2025-26.</p>
-
-  <div class="dates-grid">
-    <div class="date-card urgent">
-      <div class="date-form">FC-GPR</div>
-      <div class="date-label">T + 30 Days</div>
-      <div class="date-desc">Within 30 days of share allotment to foreign investor. Filed via FIRMS portal through AD Bank.</div>
-    </div>
-    <div class="date-card urgent">
-      <div class="date-form">FC-TRS</div>
-      <div class="date-label">T + 60 Days</div>
-      <div class="date-desc">Transfer of shares between resident &amp; non-resident. 60 days from transfer deed / remittance.</div>
-    </div>
-    <div class="date-card urgent">
-      <div class="date-form">ARF / ARF Lite</div>
-      <div class="date-label">T + 30 Days</div>
-      <div class="date-desc">Advance Remittance Form on receipt of FDI funds — 30 days from date of receipt.</div>
-    </div>
-    <div class="date-card periodic">
-      <div class="date-form">ECB-2 Return</div>
-      <div class="date-label">7th of Each Month</div>
-      <div class="date-desc">Monthly ECB transactions reported via AD Category-I Bank. For previous month's activity.</div>
-    </div>
-    <div class="date-card annual">
-      <div class="date-form">FLA Return</div>
-      <div class="date-label">15 July 2026</div>
-      <div class="date-desc">Annual Foreign Liabilities &amp; Assets return for entities with FDI/ODI. Filed on FLAIR portal.</div>
-    </div>
-    <div class="date-card annual">
-      <div class="date-form">APR (ODI Part II)</div>
-      <div class="date-label">31 December</div>
-      <div class="date-desc">Annual Performance Report for JV/WOS outside India. Submitted to AD Bank.</div>
-    </div>
-    <div class="date-card annual">
-      <div class="date-form">SOFTEX / EDF (Services)</div>
-      <div class="date-label">Monthly</div>
-      <div class="date-desc">Software/service export declaration. EDF replaces SOFTEX from Oct 2026 (FEMA 23R/2026).</div>
-    </div>
-    <div class="date-card urgent">
-      <div class="date-form">ODI — Share Certificate</div>
-      <div class="date-label">T + 30 Days</div>
-      <div class="date-desc">Overseas investment share certificate or evidence submitted to AD within 30 days of receipt.</div>
-    </div>
-    <div class="date-card periodic">
-      <div class="date-form">Export Proceeds (Goods)</div>
-      <div class="date-label">Within 15 Months</div>
-      <div class="date-desc">Realisation &amp; repatriation within 15 months of invoice (extended from 9 months — Nov 2025).</div>
-    </div>
-    <div class="date-card periodic">
-      <div class="date-form">Export Proceeds (INR)</div>
-      <div class="date-label">Within 18 Months</div>
-      <div class="date-desc">INR-invoiced or INR-settled export proceeds: 18-month repatriation window.</div>
-    </div>
-    <div class="date-card periodic">
-      <div class="date-form">Import Payments</div>
-      <div class="date-label">Within 6 Months</div>
-      <div class="date-desc">Remittance for imports to be settled within 6 months from date of shipment.</div>
-    </div>
-    <div class="date-card urgent">
-      <div class="date-form">CN (Convertible Note)</div>
-      <div class="date-label">T + 60 Days</div>
-      <div class="date-desc">Issue/transfer of convertible notes by startups reported within 60 days via FIRMS.</div>
-    </div>
-  </div>
-
-  <div class="section-title"><span class="icon">🏷️</span> Entity Legend</div>
-  <p style="margin-bottom:12px; font-size:13px; color:var(--text-mid);">Colour coding used throughout this calendar to indicate which entity type each compliance applies to:</p>
-  <div style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:30px;">
-    <span class="entity-tag et-co">Indian Company / OPC</span>
-    <span class="entity-tag et-llp">LLP / Partnership</span>
-    <span class="entity-tag et-ind">Resident Individual</span>
-    <span class="entity-tag et-nri">NRI / OCI / PIO</span>
-    <span class="entity-tag et-bank">AD Bank / NBFC</span>
-    <span class="entity-tag et-all">All Entities</span>
-  </div>
-
-  <div class="section-title"><span class="icon">⚡</span> Governing Framework</div>
-  <table class="comp-table">
-    <thead><tr>
-      <th>Regulation / Direction</th>
-      <th>Subject Matter</th>
-      <th>Key Notification No.</th>
-      <th>Status</th>
-    </tr></thead>
-    <tbody>
-      <tr><td>FEM (Transfer/Issue of Security by PROI) Regs, 2017</td><td>FDI — Equity instruments issued to foreign investors</td><td>FEMA 20(R)/2017-RB</td><td><span class="pill pill-green">Active</span></td></tr>
-      <tr><td>FEM (Overseas Investment) Regs, 2022</td><td>ODI by Indian persons/entities</td><td>FEMA 400/2022-RB</td><td><span class="pill pill-green">Active</span></td></tr>
-      <tr><td>FEM (Borrowing &amp; Lending) Regs, 2018</td><td>External Commercial Borrowings</td><td>FEMA 3(R)/2018-RB</td><td><span class="pill pill-green">Active</span></td></tr>
-      <tr><td>FEM (Export &amp; Import of Goods &amp; Services) Regs, 2026</td><td>Unified export/import framework — EDF replaces SOFTEX</td><td>FEMA 23(R)/2026-RB, dt. 13 Jan 2026</td><td><span class="pill pill-gold">Effective 1 Oct 2026</span></td></tr>
-      <tr><td>FEM (Current Account Transactions) Rules, 2000</td><td>Permissible current account outflows, LRS</td><td>GSR 381(E)/2000</td><td><span class="pill pill-green">Active (Amended)</span></td></tr>
-      <tr><td>MD — Reporting under FEMA, 1999</td><td>Master Direction on all FEMA filings</td><td>FED Master Direction No. 18/2015-16</td><td><span class="pill pill-green">Active (Updated)</span></td></tr>
-      <tr><td>MD — External Commercial Borrowings</td><td>ECB policy and reporting</td><td>RBI/FED/2018-19/67</td><td><span class="pill pill-green">Active</span></td></tr>
-      <tr><td>FEM (Non-Debt Instruments) Rules, 2019</td><td>FDI caps, sectoral limits, entry routes</td><td>GSR 912(E)/2019</td><td><span class="pill pill-green">Active (Amended)</span></td></tr>
-    </tbody>
-  </table>
-
-  <div class="alert alert-warn">
-    <div class="alert-icon">⚠️</div>
-    <div><strong>Enforcement Alert (2025):</strong> The Enforcement Directorate announced in May 2025 that FEMA violations are its top enforcement priority for the year. Common ED targets include missing FC-GPR filings for angel rounds, expired valuation reports, round-tripping structures, and delayed APR filings. Voluntary compounding before an ED notice significantly reduces exposure.</div>
-  </div>
-
-</div>
-</div><!-- /overview -->
-
-<!-- ═══════════════════════════════════════ FDI ═══════════════════════════════════════ -->
-<div id="tab-fdi" class="tab-panel">
-<div class="container">
-
-  <div class="section-title"><span class="icon">🌐</span> FDI Compliances — Inbound Foreign Investment</div>
-  <p class="section-desc">Applicable to Indian Companies, OPCs, LLPs receiving foreign investment. Governed by FEMA 20(R)/2017-RB &amp; Non-Debt Instruments Rules, 2019.</p>
-
-  <table class="comp-table">
-    <thead><tr>
-      <th>Form / Filing</th>
-      <th>Applicability</th>
-      <th>Trigger / Due Date</th>
-      <th>Filed With</th>
-      <th>Frequency</th>
-      <th>Remarks</th>
-    </tr></thead>
-    <tbody>
-      <tr>
-        <td>ARF — Advance Remittance Form</td>
-        <td><span class="entity-tag et-co">Indian Company</span><span class="entity-tag et-llp">LLP</span></td>
-        <td>Within <strong>30 days</strong> of receipt of FDI funds</td>
-        <td>RBI Regional Office via AD Bank</td>
-        <td><span class="pill pill-blue">Event-Based</span></td>
-        <td>Intimation of receipt; precedes share allotment. Merged into FC-GPR process on FIRMS.</td>
-      </tr>
-      <tr>
-        <td>FC-GPR (Foreign Currency – Gross Provisional Return)</td>
-        <td><span class="entity-tag et-co">Indian Company</span><span class="entity-tag et-llp">LLP</span></td>
-        <td>Within <strong>30 days</strong> of allotment of shares/debentures/warrants to foreign investor</td>
-        <td>RBI via AD Category-I Bank on FIRMS portal</td>
-        <td><span class="pill pill-blue">Event-Based</span></td>
-        <td>Covers equity, CCDs, CCPS, warrants. Valuation certificate from Registered Valuer / SEBI MB mandatory. Shares must be dematerialised (MCA Rule 9B for pvt cos.).</td>
-      </tr>
-      <tr>
-        <td>FC-TRS (Foreign Currency – Transfer of Shares)</td>
-        <td><span class="entity-tag et-co">Indian Company</span><span class="entity-tag et-ind">Resident Individual</span><span class="entity-tag et-nri">NRI / OCI</span></td>
-        <td>Within <strong>60 days</strong> of receipt/remittance of funds or execution of transfer deed, whichever is earlier</td>
-        <td>AD Category-I Bank → RBI via FIRMS</td>
-        <td><span class="pill pill-blue">Event-Based</span></td>
-        <td>Applies to sale, gift or swap of equity instruments between resident and non-resident. Applicable for both directions. Not for NRI–to–NRI or R–to–R transfers.</td>
-      </tr>
-      <tr>
-        <td>LLP-I (Foreign Investment in LLP)</td>
-        <td><span class="entity-tag et-llp">LLP</span></td>
-        <td>Within <strong>30 days</strong> of receipt of capital contribution by foreign partner</td>
-        <td>AD Bank → RBI via FIRMS</td>
-        <td><span class="pill pill-blue">Event-Based</span></td>
-        <td>Capital contribution or profit share for foreign partners.</td>
-      </tr>
-      <tr>
-        <td>LLP-II (Divestment/Transfer in LLP)</td>
-        <td><span class="entity-tag et-llp">LLP</span></td>
-        <td>Within <strong>60 days</strong> of transfer of capital contribution</td>
-        <td>AD Bank → RBI via FIRMS</td>
-        <td><span class="pill pill-blue">Event-Based</span></td>
-        <td>Divestment or secondary transfer by foreign partner.</td>
-      </tr>
-      <tr>
-        <td>CN — Convertible Note</td>
-        <td><span class="entity-tag et-co">Indian Startup Company</span></td>
-        <td>Within <strong>60 days</strong> of issue or transfer</td>
-        <td>AD Bank → RBI via FIRMS</td>
-        <td><span class="pill pill-blue">Event-Based</span></td>
-        <td>Startup as defined in DPIIT notification. Min. investment: ₹25 lakh. Conversion within 5 years.</td>
-      </tr>
-      <tr>
-        <td>DRR — Depository Receipts</td>
-        <td><span class="entity-tag et-co">Listed Indian Company</span></td>
-        <td>Within <strong>30 days</strong> of issue/transfer</td>
-        <td>AD Bank → RBI via FIRMS</td>
-        <td><span class="pill pill-blue">Event-Based</span></td>
-        <td>ADR/GDR issuance by listed companies.</td>
-      </tr>
-      <tr>
-        <td>ESOP (Employee Stock Options / Sweat Equity)</td>
-        <td><span class="entity-tag et-co">Indian Company</span></td>
-        <td>Within <strong>30 days</strong> of grant/issue</td>
-        <td>AD Bank → RBI via FIRMS</td>
-        <td><span class="pill pill-blue">Event-Based</span></td>
-        <td>Issued to non-resident employees. Pricing: not less than FMV at grant date.</td>
-      </tr>
-      <tr>
-        <td>DI — Downstream Investment</td>
-        <td><span class="entity-tag et-co">Indian Company with Foreign Ownership</span></td>
-        <td>Within <strong>30 days</strong> of downstream investment</td>
-        <td>AD Bank → RBI via FIRMS</td>
-        <td><span class="pill pill-blue">Event-Based</span></td>
-        <td>Indirect foreign investment (IFI). Total foreign ownership &gt; 50% triggers full FDI treatment.</td>
-      </tr>
-      <tr>
-        <td>FLA Return (Foreign Liabilities &amp; Assets)</td>
-        <td><span class="entity-tag et-co">Indian Company</span><span class="entity-tag et-llp">LLP</span><span class="entity-tag et-ind">Partnership</span></td>
-        <td><strong>15 July 2026</strong> (for FY 2025-26)</td>
-        <td>RBI directly via FLAIR portal (flair.rbi.org.in)</td>
-        <td><span class="pill pill-gold">Annual</span></td>
-        <td>Mandatory even if no new FDI/ODI in the year but outstanding balances exist. DSC Class 3 required. Provisional filing: 15 July. Revision allowed till 30 Sep.</td>
-      </tr>
-      <tr>
-        <td>FC-1 Filing with ROC</td>
-        <td><span class="entity-tag et-co">Indian Company</span></td>
-        <td>Within <strong>30 days</strong> of allotment (parallel with FC-GPR)</td>
-        <td>MCA Portal (ROC)</td>
-        <td><span class="pill pill-blue">Event-Based</span></td>
-        <td>MCA filing on receipt of foreign capital (Form FC-1 under Companies Act). Done alongside FEMA filings.</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="alert alert-info">
-    <div class="alert-icon">ℹ️</div>
-    <div><strong>Valuation Note:</strong> Shares issued to non-residents must be at a price not less than Fair Market Value (FMV) computed per Rule 11UA of Income Tax Rules (for unlisted companies) or SEBI ICDR guidelines (for listed companies). Valuation report must not be older than 90 days at the time of allotment.</div>
-  </div>
-
-  <div class="section-title"><span class="icon">🚫</span> Prohibited FDI Sectors (Select List)</div>
-  <table class="comp-table">
-    <thead><tr><th>Sector</th><th>FDI Status</th><th>Condition / Route</th></tr></thead>
-    <tbody>
-      <tr><td>Lottery / Gambling / Betting</td><td><span class="pill pill-red">Prohibited</span></td><td>Including online lottery, casinos</td></tr>
-      <tr><td>Atomic Energy</td><td><span class="pill pill-red">Prohibited</span></td><td>Nuclear power generation</td></tr>
-      <tr><td>Railway Operations (core)</td><td><span class="pill pill-red">Prohibited</span></td><td>Except permitted activities in FDI policy</td></tr>
-      <tr><td>Chit Funds</td><td><span class="pill pill-red">Prohibited</span></td><td>—</td></tr>
-      <tr><td>Multi-Brand Retail</td><td><span class="pill pill-blue">51% — Govt Route</span></td><td>Subject to conditionalities</td></tr>
-      <tr><td>Defence</td><td><span class="pill pill-blue">74% Auto / 100% Govt</span></td><td>For manufacturing</td></tr>
-      <tr><td>Insurance</td><td><span class="pill pill-green">74% — Automatic</span></td><td>Post Finance Act 2021 amendment</td></tr>
-      <tr><td>Banking (Private)</td><td><span class="pill pill-green">74% — Automatic</span></td><td>—</td></tr>
-      <tr><td>IT / Software / Services</td><td><span class="pill pill-green">100% — Automatic</span></td><td>—</td></tr>
-    </tbody>
-  </table>
-
-</div>
-</div><!-- /fdi -->
-
-<!-- ═══════════════════════════════════════ ODI ═══════════════════════════════════════ -->
-<div id="tab-odi" class="tab-panel">
-<div class="container">
-
-  <div class="section-title"><span class="icon">✈️</span> ODI Compliances — Overseas Direct Investment</div>
-  <p class="section-desc">Governed by FEM (Overseas Investment) Regulations, 2022 [FEMA 400/2022-RB]. Applies to Indian companies, LLPs, and resident individuals investing abroad in JV/WOS.</p>
-
-  <table class="comp-table">
-    <thead><tr>
-      <th>Form / Filing</th>
-      <th>Applicability</th>
-      <th>Trigger / Due Date</th>
-      <th>Filed With</th>
-      <th>Frequency</th>
-      <th>Remarks</th>
-    </tr></thead>
-    <tbody>
-      <tr>
-        <td>Form ODI Part I</td>
-        <td><span class="entity-tag et-co">Indian Company</span><span class="entity-tag et-llp">LLP</span><span class="entity-tag et-ind">Resident Individual</span></td>
-        <td>Prior to making overseas investment (or within <strong>30 days</strong> for automatic route)</td>
-        <td>Designated AD Category-I Bank</td>
-        <td><span class="pill pill-blue">Event-Based</span></td>
-        <td>UIN (Unique Identification Number) obtained. Captures investment details in JV/WOS abroad.</td>
-      </tr>
-      <tr>
-        <td>Share Certificate / Investment Evidence</td>
-        <td><span class="entity-tag et-co">Indian Company</span><span class="entity-tag et-ind">Resident Individual</span></td>
-        <td>Within <strong>30 days</strong> of receipt of share certificate / investment evidence from abroad</td>
-        <td>Designated AD Bank</td>
-        <td><span class="pill pill-blue">Event-Based</span></td>
-        <td>Documentary evidence of overseas investment must be submitted to AD immediately on receipt.</td>
-      </tr>
-      <tr>
-        <td>APR — Annual Performance Report (Form ODI Part II)</td>
-        <td><span class="entity-tag et-co">Indian Company</span><span class="entity-tag et-llp">LLP</span><span class="entity-tag et-ind">Resident Individual</span></td>
-        <td><strong>31 December</strong> of each year</td>
-        <td>AD Category-I Bank</td>
-        <td><span class="pill pill-gold">Annual</span></td>
-        <td>For each JV/WOS. Based on audited accounts of the overseas entity. Delay blocks future ODI approvals. Must be filed even if no new investment made.</td>
-      </tr>
-      <tr>
-        <td>FLA Return (ODI portion)</td>
-        <td><span class="entity-tag et-co">Indian Company</span><span class="entity-tag et-llp">LLP</span></td>
-        <td><strong>15 July 2026</strong></td>
-        <td>RBI via FLAIR portal</td>
-        <td><span class="pill pill-gold">Annual</span></td>
-        <td>Same FLA return covers both FDI received and ODI made. Reports foreign assets held abroad as of 31 March.</td>
-      </tr>
-      <tr>
-        <td>Disinvestment / Winding Up Reporting</td>
-        <td><span class="entity-tag et-co">Indian Company</span><span class="entity-tag et-ind">Individual</span></td>
-        <td>Within <strong>30 days</strong> of disinvestment / winding up proceeds received</td>
-        <td>AD Bank → RBI</td>
-        <td><span class="pill pill-blue">Event-Based</span></td>
-        <td>Proceeds must be repatriated to India within 60 days of receipt by the overseas entity.</td>
-      </tr>
-      <tr>
-        <td>ODI in Financial Services Sector</td>
-        <td><span class="entity-tag et-co">NBFC / Financial Entity</span></td>
-        <td>Prior RBI approval required + post-investment reporting</td>
-        <td>RBI (FEMA Department)</td>
-        <td><span class="pill pill-purple">Govt / RBI Approval</span></td>
-        <td>Financial sector entities require RBI nod beyond automatic route. Requires NOC from sectoral regulator.</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="alert alert-warn">
-    <div class="alert-icon">⚠️</div>
-    <div><strong>APR Non-Filing Consequence:</strong> Failure to file APR before 31 December blocks future overseas investment under automatic route. The AD Bank is required to report non-filers to RBI. Compounding penalty is levied based on amount involved and delay period.</div>
-  </div>
-
-  <div class="section-title"><span class="icon">💡</span> ODI Limits &amp; Routes</div>
-  <table class="comp-table">
-    <thead><tr><th>Investor Type</th><th>Annual Cap</th><th>Route</th><th>Conditions</th></tr></thead>
-    <tbody>
-      <tr><td>Indian Company (Automatic)</td><td>400% of Net Worth</td><td><span class="pill pill-green">Automatic</span></td><td>RBI / AD Bank approval; net worth based on last audited balance sheet</td></tr>
-      <tr><td>Indian Company (Approval)</td><td>Beyond 400% of NW</td><td><span class="pill pill-purple">RBI Approval</span></td><td>Case-by-case basis</td></tr>
-      <tr><td>Resident Individual (LRS)</td><td>USD 250,000 per FY</td><td><span class="pill pill-green">LRS Automatic</span></td><td>For direct overseas investment by individuals</td></tr>
-      <tr><td>Registered Partnership / LLP</td><td>400% of Partners' Capital</td><td><span class="pill pill-green">Automatic</span></td><td>Partner's capital as per audited accounts</td></tr>
-    </tbody>
-  </table>
-
-</div>
-</div><!-- /odi -->
-
-<!-- ═══════════════════════════════════════ ECB ═══════════════════════════════════════ -->
-<div id="tab-ecb" class="tab-panel">
-<div class="container">
-
-  <div class="section-title"><span class="icon">💰</span> External Commercial Borrowings (ECB) Compliances</div>
-  <p class="section-desc">Governed by FEM (Borrowing &amp; Lending) Regulations, 2018 [FEMA 3(R)/2018-RB] and RBI Master Direction on ECB. Covers foreign currency and INR-denominated borrowings from non-resident lenders.</p>
-
-  <table class="comp-table">
-    <thead><tr>
-      <th>Form / Filing</th>
-      <th>Applicability</th>
-      <th>Trigger / Due Date</th>
-      <th>Filed With</th>
-      <th>Frequency</th>
-      <th>Remarks</th>
-    </tr></thead>
-    <tbody>
-      <tr>
-        <td>Loan Registration Number (LRN) — Form ECB</td>
-        <td><span class="entity-tag et-co">Indian Borrower</span><span class="entity-tag et-bank">AD Bank</span></td>
-        <td><strong>Before first drawdown</strong></td>
-        <td>RBI via AD Category-I Bank (CIMS Portal)</td>
-        <td><span class="pill pill-blue">Event-Based</span></td>
-        <td>LRN is mandatory before any ECB drawdown. Delays block utilisation. Covers loans, bonds, FCCBs, RDBs, trade credits &gt; 3 years.</td>
-      </tr>
-      <tr>
-        <td>ECB-2 Return (Monthly Reporting)</td>
-        <td><span class="entity-tag et-co">All ECB Borrowers</span></td>
-        <td><strong>7th of every month</strong> (for previous month)</td>
-        <td>AD Category-I Bank → RBI (CIMS)</td>
-        <td><span class="pill pill-red">Monthly</span></td>
-        <td>Reports drawdowns, repayments, outstanding amount, interest paid, hedging positions. Any change in ECB terms also reported here.</td>
-      </tr>
-      <tr>
-        <td>ECB Agreement / Loan Modification Reporting</td>
-        <td><span class="entity-tag et-co">Indian Borrower</span></td>
-        <td>Within <strong>7 days</strong> of change in terms (interest rate, maturity, lender change)</td>
-        <td>AD Bank → RBI via CIMS</td>
-        <td><span class="pill pill-blue">Event-Based</span></td>
-        <td>Any change in principal amount, lender, currency, end-use must be reported immediately.</td>
-      </tr>
-      <tr>
-        <td>Annual Hedging Compliance Statement</td>
-        <td><span class="entity-tag et-co">Mandatory Hedging Entities</span></td>
-        <td>Within <strong>3 months</strong> of end of financial year</td>
-        <td>AD Bank</td>
-        <td><span class="pill pill-gold">Annual</span></td>
-        <td>For borrowers in infrastructure, core investment companies where mandatory hedging of 70% of ECB applies.</td>
-      </tr>
-      <tr>
-        <td>Trade Credit Reporting</td>
-        <td><span class="entity-tag et-co">Importers</span><span class="entity-tag et-bank">AD Bank</span></td>
-        <td>Within <strong>30 days</strong> of trade credit arrangement</td>
-        <td>AD Bank</td>
-        <td><span class="pill pill-blue">Event-Based</span></td>
-        <td>Short-term (up to 3 years) buyer's/supplier's credit for imports. Trade credit &gt; USD 50 mn needs prior RBI approval.</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="section-title"><span class="icon">📊</span> ECB Tracks Summary</div>
-  <table class="comp-table">
-    <thead><tr><th>Track</th><th>Currency</th><th>Eligible Borrowers</th><th>Min. Avg. Maturity</th><th>All-In Cost Ceiling</th></tr></thead>
-    <tbody>
-      <tr><td>Track I — Medium-Term FCY ECB</td><td>Foreign Currency</td><td>Listed / unlisted companies, ports, shipyards, etc.</td><td>3 years (general); 1 year (up to USD 50 mn)</td><td>Benchmark + 300 bps</td></tr>
-      <tr><td>Track II — Long-Term FCY ECB</td><td>Foreign Currency</td><td>Infrastructure/real estate companies</td><td>10 years</td><td>Benchmark + 450 bps</td></tr>
-      <tr><td>Track III — INR-Denominated ECB</td><td>Indian Rupee</td><td>All eligible borrowers</td><td>3–5 years</td><td>Domestic INR yield + 450 bps</td></tr>
-      <tr><td>Masala Bonds</td><td>Indian Rupee</td><td>Indian companies, banks, REITs, InvITs</td><td>3 years</td><td>As per Track III</td></tr>
-    </tbody>
-  </table>
-
-  <div class="alert alert-danger">
-    <div class="alert-icon">🚨</div>
-    <div><strong>Critical:</strong> Failure to obtain LRN before first drawdown is a serious FEMA violation. ECB-2 return must be filed every month without exception, even if there is no transaction — NIL return is required. Late ECB-2 attracts LSF at ₹7,500 per return per month of delay.</div>
-  </div>
-
-</div>
-</div><!-- /ecb -->
-
-<!-- ═══════════════════════════════════════ EXPORT/IMPORT ═══════════════════════════════════════ -->
-<div id="tab-export" class="tab-panel">
-<div class="container">
-
-  <div class="section-title"><span class="icon">📦</span> Export &amp; Import Compliances</div>
-  <p class="section-desc">FEMA 23(R)/2026-RB (effective 1 Oct 2026) replaces the 2015 Regulations. Introduces unified EDF replacing SOFTEX for services. Until 1 Oct 2026, existing framework continues.</p>
-
-  <div class="alert alert-warn">
-    <div class="alert-icon">📢</div>
-    <div><strong>Major 2025 Change:</strong> Effective November 13, 2025, export proceed realisation period extended from <strong>9 months → 15 months</strong> for goods; <strong>18 months</strong> for INR-invoiced/settled exports. Advance payment shipment period extended from 1 year → <strong>3 years</strong>. AD Banks can now grant extension without RBI permission in most cases.</div>
-  </div>
-
-  <div class="section-title" style="margin-top:20px;"><span class="icon">📤</span> Export Compliances</div>
-  <table class="comp-table">
-    <thead><tr>
-      <th>Compliance</th>
-      <th>Applicability</th>
-      <th>Due Date / Timeline</th>
-      <th>Form / Portal</th>
-      <th>Remarks</th>
-    </tr></thead>
-    <tbody>
-      <tr>
-        <td>Export Declaration Form — Goods (EDF / SDF)</td>
-        <td><span class="entity-tag et-co">All Goods Exporters</span></td>
-        <td>At time of shipment (before goods leave India)</td>
-        <td>ICEGATE Portal</td>
-        <td>EDF filed electronically. Mandatory before customs clearance. GR/SDF used for sea/air shipment.</td>
-      </tr>
-      <tr>
-        <td>SOFTEX Form — Software/Services Exports</td>
-        <td><span class="entity-tag et-co">IT/ITES/Software Exporters</span></td>
-        <td>Within <strong>30 days</strong> of invoice (current regime till Sep 2026)</td>
-        <td>STPI / SEZ Authority</td>
-        <td>From Oct 2026 (FEMA 2026 Regs): Unified monthly EDF replaces SOFTEX. Single filing for all service exports to multiple clients in calendar month.</td>
-      </tr>
-      <tr>
-        <td>Realisation &amp; Repatriation — Goods</td>
-        <td><span class="entity-tag et-all">All Exporters</span></td>
-        <td>Within <strong>15 months</strong> from invoice date</td>
-        <td>Through AD Category-I Bank</td>
-        <td>Extended from 9 months — Nov 2025. Status Holder Exporters: 15 months. EOUs: 9 months (check AD Bank for specific conditions).</td>
-      </tr>
-      <tr>
-        <td>Realisation — INR-Invoiced Exports</td>
-        <td><span class="entity-tag et-all">All Exporters (INR Trade)</span></td>
-        <td>Within <strong>18 months</strong></td>
-        <td>AD Bank</td>
-        <td>Exports invoiced and/or settled in Indian Rupees (INR trade with partner countries).</td>
-      </tr>
-      <tr>
-        <td>EDPMS — Export Data Processing &amp; Monitoring System</td>
-        <td><span class="entity-tag et-bank">AD Bank (on behalf of exporter)</span></td>
-        <td>Ongoing — AD Bank matches receipts to shipping bills</td>
-        <td>RBI EDPMS</td>
-        <td>AD Bank responsible for monitoring export proceed realisation and marking shipping bills as realised in EDPMS.</td>
-      </tr>
-      <tr>
-        <td>Export Write-Off (Unrecovered Proceeds)</td>
-        <td><span class="entity-tag et-co">Exporters</span></td>
-        <td>Application to AD Bank after exhausting recovery</td>
-        <td>AD Category-I Bank</td>
-        <td>Self-write-off up to 10% of invoice value (status holder) or 5% (others) allowed. Beyond this, AD Bank approval required.</td>
-      </tr>
-      <tr>
-        <td>FIRC / e-FIRA (Foreign Inward Remittance Certificate)</td>
-        <td><span class="entity-tag et-all">All Exporters/Service Providers</span></td>
-        <td>On receipt of foreign payment</td>
-        <td>AD Bank</td>
-        <td>Required for GST zero-rating benefit, SEZ entitlements, income tax deductions. Keep for 6 years minimum.</td>
-      </tr>
-      <tr>
-        <td>Purpose Code for Inward Remittances</td>
-        <td><span class="entity-tag et-all">All Entities receiving FX</span></td>
-        <td>At time of receipt / instruction to AD Bank</td>
-        <td>AD Bank</td>
-        <td>FETERS purpose codes: P0802 (software consultancy), P0806 (IT services), P0807 (consulting). Wrong purpose code is a technical FEMA violation.</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="section-title"><span class="icon">📥</span> Import Compliances</div>
-  <table class="comp-table">
-    <thead><tr>
-      <th>Compliance</th>
-      <th>Applicability</th>
-      <th>Due Date / Timeline</th>
-      <th>Form / Portal</th>
-      <th>Remarks</th>
-    </tr></thead>
-    <tbody>
-      <tr>
-        <td>Import Payment — Settlement</td>
-        <td><span class="entity-tag et-all">All Importers</span></td>
-        <td>Within <strong>6 months</strong> from shipment date</td>
-        <td>AD Category-I Bank</td>
-        <td>Payment must be made through authorised banking channels. Documents against Payment (DP) / Documents against Acceptance (DA) basis.</td>
-      </tr>
-      <tr>
-        <td>Advance Import Payment</td>
-        <td><span class="entity-tag et-co">Importers</span></td>
-        <td>Shipment within <strong>3 years</strong> from advance payment</td>
-        <td>AD Bank monitors via IDPMS</td>
-        <td>AD Bank must obtain bank guarantee / LC for advance payment &gt; USD 200,000 from non-MSE importers. MSEs: AD Bank may waive guarantee on merits.</td>
-      </tr>
-      <tr>
-        <td>IDPMS — Import Data Processing &amp; Monitoring System</td>
-        <td><span class="entity-tag et-bank">AD Bank</span></td>
-        <td>Ongoing — AD Bank tracks import payments against bills of entry</td>
-        <td>RBI IDPMS</td>
-        <td>AD Bank monitors and closes import transactions. Unmatched entries trigger compliance review.</td>
-      </tr>
-      <tr>
-        <td>Import of Gold / Precious Metals</td>
-        <td><span class="entity-tag et-bank">Nominated Banks / Agencies</span></td>
-        <td>As per import licence and DGFT/RBI guidelines</td>
-        <td>RBI Nominated Agencies</td>
-        <td>Strict import controls. 20% is detained for export (80:20 scheme suspended but policy applies). Check current RBI circular.</td>
-      </tr>
-      <tr>
-        <td>Merchanting Trade Transactions</td>
-        <td><span class="entity-tag et-co">Merchants / Traders</span></td>
-        <td>Goods must not enter India; payment settled within <strong>the same calendar year</strong></td>
-        <td>AD Bank</td>
-        <td>Ship-to-ship trade. Short-term credit up to 90 days permissible. RBI A.P. (DIR Series) Circular No. 115 applies.</td>
-      </tr>
-    </tbody>
-  </table>
-
-</div>
-</div><!-- /export -->
-
-<!-- ═══════════════════════════════════════ LRS / NRI ═══════════════════════════════════════ -->
-<div id="tab-lrs" class="tab-panel">
-<div class="container">
-
-  <div class="section-title"><span class="icon">👤</span> LRS, NRI/OCI/PIO Compliances &amp; Remittances</div>
-  <p class="section-desc">Governed by FEM (Current Account Transactions) Rules, 2000 (as amended), Schedules I, II, III. Also covers NRI accounts, repatriation, investments by non-residents.</p>
-
-  <div class="section-title" style="margin-top:24px; font-size:18px;"><span class="icon">🌍</span> Liberalised Remittance Scheme (LRS) — Resident Individuals</div>
-  <table class="comp-table">
-    <thead><tr>
-      <th>Compliance / Feature</th>
-      <th>Detail</th>
-      <th>Limit / Threshold</th>
-      <th>Remarks</th>
-    </tr></thead>
-    <tbody>
-      <tr>
-        <td>LRS Annual Limit</td>
-        <td>Remittance by Resident Individual for permitted purposes (education, travel, investment, gifts, etc.)</td>
-        <td><strong>USD 250,000 per financial year</strong></td>
-        <td>Limit unchanged. Minor children can remit under parent's LRS quota with guardian consent.</td>
-      </tr>
-      <tr>
-        <td>TCS on LRS Remittances</td>
-        <td>Tax Collected at Source by AD Bank/authorised dealer</td>
-        <td>20% on amount exceeding <strong>₹10 lakh per FY</strong> (threshold raised from ₹7L — Budget 2025)</td>
-        <td>Reduced to 5% for education/medical purposes. Nil TCS for LRS via Rupee Card up to ₹10L. TCS credited as advance tax — claimable in ITR.</td>
-      </tr>
-      <tr>
-        <td>Form A2 — Application to AD</td>
-        <td>Application form for any outward remittance under LRS</td>
-        <td>Required for each remittance</td>
-        <td>Self-declaration by resident on end-use. AD Bank responsible for checking annual LRS limit.</td>
-      </tr>
-      <tr>
-        <td>Prohibited LRS Purposes</td>
-        <td>Items in Schedule I of FEM (CAT) Rules 2000</td>
-        <td>N/A</td>
-        <td>Cannot remit for: purchase of lottery tickets, banned magazines, sweepstakes, margin trading on foreign exchanges, etc.</td>
-      </tr>
-      <tr>
-        <td>LRS Reporting by AD Banks</td>
-        <td>Monthly reporting to RBI by banks on LRS utilisation</td>
-        <td>By <strong>5th of following month</strong></td>
-        <td>Banks must report details of each LRS remittance to RBI through FETERS system for monitoring.</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="section-title" style="margin-top:24px; font-size:18px;"><span class="icon">🌐</span> NRI / OCI / PIO Account Compliances</div>
-  <table class="comp-table">
-    <thead><tr>
-      <th>Account Type</th>
-      <th>Currency</th>
-      <th>Repatriability</th>
-      <th>Interest Taxability</th>
-      <th>Key Compliance</th>
-    </tr></thead>
-    <tbody>
-      <tr>
-        <td>NRE Account (Non-Resident External)</td>
-        <td>INR (foreign currency converted)</td>
-        <td><span class="pill pill-green">Fully Repatriable</span></td>
-        <td>Tax-Free in India</td>
-        <td>KYC update mandatory on change in residency status. Joint account allowed only with NRI.</td>
-      </tr>
-      <tr>
-        <td>NRO Account (Non-Resident Ordinary)</td>
-        <td>INR</td>
-        <td><span class="pill pill-gold">USD 1 mn/FY (after tax)</span></td>
-        <td>Taxable in India (TDS applicable)</td>
-        <td>CA Certificate (Form 15CA/15CB) required for repatriation. All India income (rent, dividend) credited here.</td>
-      </tr>
-      <tr>
-        <td>FCNR(B) Account (Foreign Currency Non-Resident)</td>
-        <td>Foreign Currency (USD, GBP, EUR, JPY, CAD, AUD)</td>
-        <td><span class="pill pill-green">Fully Repatriable</span></td>
-        <td>Tax-Free in India</td>
-        <td>Min. maturity 1 year, max 5 years. Premature withdrawal attracts penalty. Popular for NRI fixed deposits.</td>
-      </tr>
-      <tr>
-        <td>RFC Account (Resident Foreign Currency)</td>
-        <td>Foreign Currency</td>
-        <td><span class="pill pill-green">Fully Repatriable</span></td>
-        <td>Interest taxable</td>
-        <td>For returning NRIs who have become resident. Foreign assets brought back can be held in RFC.</td>
-      </tr>
-      <tr>
-        <td>NRO Repatriation — Form 15CA/15CB</td>
-        <td>INR → Foreign Currency</td>
-        <td>USD 1 mn per FY</td>
-        <td>—</td>
-        <td>CA Certificate (Form 15CB) obtained before Form 15CA filed on TIN portal. AD Bank verifies tax clearance.</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="section-title" style="margin-top:24px; font-size:18px;"><span class="icon">🏠</span> NRI Investment in India</div>
-  <table class="comp-table">
-    <thead><tr><th>Investment Type</th><th>Route</th><th>Key Condition</th><th>Repatriation</th></tr></thead>
-    <tbody>
-      <tr><td>Equity Shares (listed — secondary market)</td><td>Portfolio Investment Scheme (PINS) via PIS Account</td><td>Through designated AD Bank; 5% aggregate limit per company</td><td>Repatriable if purchased on repatriable basis from NRE / FCNR(B)</td></tr>
-      <tr><td>Equity Shares (primary — IPO/FPO)</td><td>Automatic — FDI Route</td><td>At face value; allotment under NRI category</td><td>Repatriable</td></tr>
-      <tr><td>Immovable Property (Residential)</td><td>Permitted — No restrictions</td><td>Cannot acquire agricultural land, plantation, farmhouse</td><td>Principal + capital gain repatriable (2 properties limit) from NRO after tax payment</td></tr>
-      <tr><td>Government Securities / Bonds</td><td>Permitted</td><td>On repatriable basis from NRE; non-repatriable from NRO</td><td>As per account type</td></tr>
-      <tr><td>Mutual Funds</td><td>Permitted (sector-wise SEBI limits)</td><td>FATCA declaration required for US/Canada NRIs</td><td>Repatriable if purchased from NRE funds</td></tr>
-    </tbody>
-  </table>
-
-</div>
-</div><!-- /lrs -->
-
-<!-- ═══════════════════════════════════════ PENALTY ═══════════════════════════════════════ -->
-<div id="tab-penalty" class="tab-panel">
-<div class="container">
-
-  <div class="section-title"><span class="icon">⚖️</span> Penalties, LSF Matrix &amp; Compounding</div>
-  <p class="section-desc">Section 13 of FEMA, 1999 governs penalties. RBI Circular No. 16 dated 30 Sep 2022 introduced the revised uniform LSF (Late Submission Fee) matrix.</p>
-
-  <div class="section-title" style="font-size:18px; margin-top:24px;"><span class="icon">💸</span> Penalty under Section 13 — FEMA, 1999</div>
-  <table class="comp-table">
-    <thead><tr><th>Type of Violation</th><th>Penalty Amount</th><th>Continuing Violation</th><th>Effective Date</th></tr></thead>
-    <tbody>
-      <tr>
-        <td>Quantifiable Violations (amount involved determinable)</td>
-        <td>Up to <strong>3× the transaction amount</strong></td>
-        <td>₹5,000 per day after first conviction</td>
-        <td>FEMA 1999 (Section 13)</td>
-      </tr>
-      <tr>
-        <td>Non-Quantifiable Violations (amount not determinable)</td>
-        <td>Up to <strong>₹2,00,000</strong></td>
-        <td>₹5,000 per day</td>
-        <td>FEMA 1999 (Section 13)</td>
-      </tr>
-      <tr>
-        <td>Technical / Procedural Violations (delayed reporting, minor inconsistencies)</td>
-        <td><strong>₹2 lakh cap</strong> on penalty</td>
-        <td>₹5,000 per day</td>
-        <td>RBI Notification — April 2025</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="section-title" style="font-size:18px; margin-top:24px;"><span class="icon">📋</span> LSF — Late Submission Fee Matrix (RBI Circular No. 16, 30 Sep 2022)</div>
-  <p class="section-desc" style="margin-bottom:16px;">Applicable to all reporting delays on or after 30 September 2022 across all FEMA functions.</p>
-
-  <table class="comp-table">
-    <thead><tr>
-      <th>Filing Type</th>
-      <th>LSF Formula</th>
-      <th>Base Fee</th>
-      <th>Example Calculation</th>
-    </tr></thead>
-    <tbody>
-      <tr>
-        <td>Event-Based Filings (FC-GPR, FC-TRS, ECB Form, ODI, etc.)</td>
-        <td><strong>₹7,500 + [0.025% × A × n]</strong><br><small>A = Amount involved; n = number of days delay</small></td>
-        <td>₹7,500</td>
-        <td>Delay of 30 days on FC-GPR for ₹1 Cr FDI:<br>₹7,500 + [0.025% × 1,00,00,000 × 30] = ₹7,500 + ₹75,000 = <strong>₹82,500</strong></td>
-      </tr>
-      <tr>
-        <td>Periodical Filings (FLA Return, ECB-2, APR, etc.)</td>
-        <td><strong>₹7,500 per return</strong> (flat)</td>
-        <td>₹7,500</td>
-        <td>FLA Return filed 45 days late: <strong>₹7,500</strong> (flat — not multiplied by days)</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="section-title" style="font-size:18px; margin-top:24px;"><span class="icon">🤝</span> Compounding of Offences (Section 15 of FEMA)</div>
-  <table class="comp-table">
-    <thead><tr><th>Authority</th><th>Jurisdiction</th><th>Compounding Fee</th><th>Remarks</th></tr></thead>
-    <tbody>
-      <tr>
-        <td>Reserve Bank of India (RBI)</td>
-        <td>All FEMA contraventions except those referred to ED</td>
-        <td>Based on transaction amount and severity. Formula-based as per Master Direction on Compounding</td>
-        <td>Voluntary disclosure encouraged. Compounding before ED notice is significantly cheaper. Application via AD Bank to RBI regional office.</td>
-      </tr>
-      <tr>
-        <td>Enforcement Directorate (ED)</td>
-        <td>Money laundering / PMLA cases + serious FEMA violations</td>
-        <td>Up to 3× transaction amount + criminal proceedings possible</td>
-        <td>ED investigates if suspected PMLA involvement. Since May 2025, ED has intensified FEMA focus.</td>
-      </tr>
-      <tr>
-        <td>Adjudicating Authority (Appellate Tribunal)</td>
-        <td>Appeals against RBI/ED compounding orders</td>
-        <td>Appellate Tribunal for Foreign Exchange (ATFE)</td>
-        <td>Appeal under Section 17 of FEMA. Further appeal to High Court under Section 35.</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="section-title" style="font-size:18px; margin-top:24px;"><span class="icon">📌</span> Filing-wise Penalty Quick Reference</div>
-  <table class="comp-table">
-    <thead><tr><th>Form</th><th>Deadline Missed</th><th>LSF Type</th><th>Action Required</th></tr></thead>
-    <tbody>
-      <tr><td>FC-GPR</td><td>Beyond 30 days of allotment</td><td>Event-Based</td><td>File with LSF via AD Bank; compounding if &gt;6 months delay</td></tr>
-      <tr><td>FC-TRS</td><td>Beyond 60 days</td><td>Event-Based</td><td>File with LSF; FEMA compounding application if significant</td></tr>
-      <tr><td>FLA Return</td><td>Beyond 15 July</td><td>Periodical — ₹7,500 flat</td><td>File on FLAIR portal immediately with LSF</td></tr>
-      <tr><td>APR (ODI Part II)</td><td>Beyond 31 December</td><td>Periodical — ₹7,500 flat</td><td>File via AD Bank; blocks future ODI till cleared</td></tr>
-      <tr><td>ECB-2 Return</td><td>Beyond 7th of month</td><td>Periodical — ₹7,500/return</td><td>File via AD Bank immediately</td></tr>
-      <tr><td>ECB-1 (LRN)</td><td>Post-drawdown without LRN</td><td>Event-Based (based on ECB amount)</td><td>Compounding mandatory — serious violation</td></tr>
-      <tr><td>ODI Part I</td><td>Post-investment</td><td>Event-Based</td><td>Compounding; blocks future overseas investments</td></tr>
-      <tr><td>CN (Convertible Note)</td><td>Beyond 60 days</td><td>Event-Based</td><td>File with LSF via FIRMS portal</td></tr>
-    </tbody>
-  </table>
-
-</div>
-</div><!-- /penalty -->
-
-<!-- ═══════════════════════════════════════ UPDATES ═══════════════════════════════════════ -->
-<div id="tab-updates" class="tab-panel">
-<div class="container">
-
-  <div class="section-title"><span class="icon">🆕</span> FEMA — Key Regulatory Updates 2025-26</div>
-  <p class="section-desc">Latest RBI notifications, circulars, and policy changes effective in 2025 and 2026 that impact FEMA compliance.</p>
-
-  <table class="comp-table">
-    <thead><tr>
-      <th>Date</th>
-      <th>Notification / Circular</th>
-      <th>Change / Impact</th>
-      <th>Effective From</th>
-      <th>Entity Impact</th>
-    </tr></thead>
-    <tbody>
-      <tr>
-        <td>13 Jan 2026</td>
-        <td>FEMA 23(R)/2026-RB — Export &amp; Import of Goods &amp; Services Regulations, 2026</td>
-        <td>Replaces 2015 Regulations + 167 circulars. Unified EDF replaces SOFTEX for services. Single monthly filing for all service exports. AD Banks can approve most extensions without RBI.</td>
-        <td><strong>1 Oct 2026</strong></td>
-        <td><span class="entity-tag et-co">Exporters</span><span class="entity-tag et-bank">AD Bank</span></td>
-      </tr>
-      <tr>
-        <td>Nov 2025</td>
-        <td>RBI Circular — Export Proceeds Realisation Extension</td>
-        <td>Export proceeds realisation period extended: Goods → 15 months (from 9). INR-settled exports → 18 months. Advance payment shipment period: 1 year → 3 years.</td>
-        <td><strong>13 Nov 2025 (immediate)</strong></td>
-        <td><span class="entity-tag et-all">All Exporters</span></td>
-      </tr>
-      <tr>
-        <td>Apr 2025</td>
-        <td>RBI — ₹2 Lakh Cap on Technical/Procedural Violations</td>
-        <td>Penalty for delayed reporting, minor inconsistencies, technical lapses capped at ₹2 lakh. Provides relief for inadvertent delays.</td>
-        <td><strong>Apr 2025</strong></td>
-        <td><span class="entity-tag et-all">All Entities</span></td>
-      </tr>
-      <tr>
-        <td>May 2025</td>
-        <td>ED Announcement — FEMA Enforcement Priority 2025</td>
-        <td>ED Director declared FEMA violations as top enforcement priority for FY 2025-26. Focus on: missing FC-GPR for angel FDI, expired valuation reports, round-tripping, delayed APR filings.</td>
-        <td><strong>May 2025</strong></td>
-        <td><span class="entity-tag et-co">Startups</span><span class="entity-tag et-co">Companies with FDI</span></td>
-      </tr>
-      <tr>
-        <td>Budget 2025</td>
-        <td>LRS — TCS Threshold Revision</td>
-        <td>TCS-free threshold for LRS remittances raised from ₹7 lakh to ₹10 lakh per financial year for eligible purposes.</td>
-        <td><strong>FY 2025-26</strong></td>
-        <td><span class="entity-tag et-ind">Resident Individuals</span></td>
-      </tr>
-      <tr>
-        <td>2025</td>
-        <td>RBI — Beneficial Ownership Disclosure Focus</td>
-        <td>Regulatory focus intensified on BO disclosure for FDI recipients, round-tripping prevention, and transaction documentation quality.</td>
-        <td><strong>Ongoing 2025-26</strong></td>
-        <td><span class="entity-tag et-co">All FDI Recipients</span></td>
-      </tr>
-      <tr>
-        <td>2024-25</td>
-        <td>FLA Deadline Extended (FY 2024-25)</td>
-        <td>FLA return for FY 2024-25 deadline extended from 15 July 2025 to 31 July 2025. FY 2025-26 deadline remains 15 July 2026.</td>
-        <td><strong>FY 2025-26: 15 July 2026</strong></td>
-        <td><span class="entity-tag et-co">Companies</span><span class="entity-tag et-llp">LLPs</span></td>
-      </tr>
-      <tr>
-        <td>Sep 2022</td>
-        <td>RBI Circular No. 16 — Revised LSF Matrix</td>
-        <td>Uniform LSF formula introduced: ₹7,500 + [0.025% × A × n] for event-based; ₹7,500 flat for periodical. Applies to all delays on/after 30 Sep 2022.</td>
-        <td><strong>30 Sep 2022 (ongoing)</strong></td>
-        <td><span class="entity-tag et-all">All Filers</span></td>
-      </tr>
-      <tr>
-        <td>2022</td>
-        <td>FEM (Overseas Investment) Regulations, 2022</td>
-        <td>Comprehensive overhaul of ODI regime. New categories: ODI, OPI (Overseas Portfolio Investment). Simplified for resident individuals. Financial services sector carve-out continues.</td>
-        <td><strong>22 Aug 2022 (ongoing)</strong></td>
-        <td><span class="entity-tag et-co">Indian ODI Entities</span><span class="entity-tag et-ind">Individuals</span></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="section-title" style="margin-top:28px;"><span class="icon">🔮</span> Upcoming / Watch-Out Items</div>
-  <table class="comp-table">
-    <thead><tr><th>Item</th><th>Expected / Effective Date</th><th>Action Required</th></tr></thead>
-    <tbody>
-      <tr>
-        <td>FEMA 2026 Export/Import Regulations — Full Operationalisation</td>
-        <td><strong>1 Oct 2026</strong></td>
-        <td>Review existing SOFTEX processes; update ERP for monthly EDF filing; coordinate with AD Bank for EDF infrastructure readiness</td>
-      </tr>
-      <tr>
-        <td>FLA Return for FY 2025-26</td>
-        <td><strong>15 Jul 2026</strong></td>
-        <td>Gather audited accounts, FDI/ODI data as of 31 Mar 2026; file on FLAIR portal with DSC Class 3</td>
-      </tr>
-      <tr>
-        <td>APR Filing for JV/WOS (FY ending 31 Dec 2025 accounts)</td>
-        <td><strong>31 Dec 2025</strong> (already passed) → <strong>31 Dec 2026</strong></td>
-        <td>Obtain audited financials of overseas entity; file ODI Part II via AD Bank</td>
-      </tr>
-      <tr>
-        <td>ED Scrutiny — FDI Documentation Audit</td>
-        <td>Ongoing 2026</td>
-        <td>Conduct internal FEMA audit; rectify missing FC-GPR filings; ensure all valuation reports are current; proactively compound violations</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="alert alert-info" style="margin-top:20px;">
-    <div class="alert-icon">💡</div>
-    <div><strong>Proactive Compounding Strategy:</strong> Under FEMA, voluntarily disclosing a contravention and applying for compounding before an ED show-cause notice significantly reduces both the compounding fee and reputational risk. Companies should conduct a bi-annual FEMA compliance audit, especially before funding rounds, IPOs, or cross-border M&amp;A transactions.</div>
-  </div>
-
-  <div class="section-title" style="margin-top:28px;"><span class="icon">🛠️</span> Key RBI Portals &amp; Systems</div>
-  <table class="comp-table">
-    <thead><tr><th>Portal / System</th><th>Purpose</th><th>URL / Access</th></tr></thead>
-    <tbody>
-      <tr><td>FIRMS (Foreign Investment Reporting &amp; Management System)</td><td>FC-GPR, FC-TRS, LLP-I/II, CN, DRR, ESOP, DI filings</td><td>firms.rbi.org.in (via AD Bank login)</td></tr>
-      <tr><td>FLAIR (Foreign Liabilities &amp; Assets Information Reporting)</td><td>Annual FLA Return</td><td>flair.rbi.org.in (entity logs in directly with DSC)</td></tr>
-      <tr><td>CIMS (Centralised Information Management System)</td><td>ECB filings (Form ECB, ECB-2 Returns)</td><td>cims.rbi.org.in (via AD Bank)</td></tr>
-      <tr><td>FETERS</td><td>Foreign Exchange Transactions Electronic Reporting System — monthly AD Bank reporting on LRS, purpose codes</td><td>AD Bank backend system</td></tr>
-      <tr><td>EDPMS</td><td>Export Data Processing &amp; Monitoring System — shipping bill closure, proceed realisation tracking</td><td>AD Bank / ICEGATE</td></tr>
-      <tr><td>IDPMS</td><td>Import Data Processing &amp; Monitoring System — import payment tracking against bills of entry</td><td>AD Bank system</td></tr>
-      <tr><td>TIN Portal</td><td>Form 15CA / 15CB — NRO repatriation tax clearance</td><td>tin.tin.nsdl.com</td></tr>
-    </tbody>
-  </table>
-
-</div>
-</div><!-- /updates -->
-
-<footer>
-  Prepared by <span>S S Sancheti &amp; Associates, Chartered Accountants</span> &nbsp;·&nbsp; Mumbai &nbsp;·&nbsp; 
-  FEMA 1999 Expert Advisory &nbsp;·&nbsp; May 2026 &nbsp;·&nbsp;
-  Reference: RBI Master Directions, FEMA Notifications, RBI Circulars &nbsp;·&nbsp;
-  <span>For professional use only. Verify all due dates with current RBI notifications.</span>
-</footer>
-
-<script>
-function switchTab(id, btn) {
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('tab-' + id).classList.add('active');
-  btn.classList.add('active');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+/* ============================================================
+   FINOSCAPE — Additional CSS Fixes
+   Paste into: WordPress Admin → Appearance → Customise
+                → Additional CSS → Publish
+   Keeps your purple template exactly as-is.
+   Only fixes: buttons, contrast, footer, fonts, spacing.
+   ============================================================ */
+
+/* ── 1. BUTTONS — White on purple (much more premium) ───── */
+.elementor-button,
+.elementor-button-wrapper .elementor-button,
+a.elementor-button,
+button.elementor-button {
+  background-color: #ffffff !important;
+  color: #3a0ca3 !important;
+  border: 2px solid #ffffff !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.3px !important;
+  transition: all 0.2s ease !important;
 }
-</script>
-</body>
-</html>
+.elementor-button:hover,
+.elementor-button-wrapper .elementor-button:hover {
+  background-color: transparent !important;
+  color: #ffffff !important;
+  border-color: #ffffff !important;
+}
+
+/* ── 2. SUBSCRIBE button — keep it distinct ─────────────── */
+.wp-block-button__link,
+input[type="submit"],
+.wpcf7-submit,
+.mc4wp-form-fields input[type="submit"] {
+  background-color: #7b2ff7 !important;
+  color: #ffffff !important;
+  border-radius: 8px !important;
+  padding: 12px 28px !important;
+  border: none !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: background 0.2s ease !important;
+}
+input[type="submit"]:hover { background-color: #6320d4 !important; }
+
+/* ── 3. ABOUT SECTION — Fix the low-contrast purple text ── */
+/* The lavender text on purple gradient is hard to read.
+   This forces the body text inside the about section to white */
+.elementor-widget-text-editor p,
+.elementor-widget-text-editor {
+  line-height: 1.8 !important;
+}
+/* Force white text in dark gradient sections */
+[data-element_type="section"].e-con-full .elementor-widget-text-editor,
+[data-element_type="section"].e-con-full p {
+  color: rgba(255,255,255,0.9) !important;
+}
+
+/* ── 4. FOOTER — Style the current minimal footer ──────── */
+.site-footer,
+.ast-footer-wrap,
+footer.site-footer {
+  background-color: #1a0533 !important; /* very dark purple — matches your brand */
+  color: #d4b8f5 !important;
+  padding: 40px 20px 20px !important;
+}
+.site-footer a,
+.ast-footer-wrap a {
+  color: #c084fc !important;
+  text-decoration: none !important;
+}
+.site-footer a:hover { color: #ffffff !important; text-decoration: underline !important; }
+.ast-copyright-text,
+.site-footer .copyright {
+  color: #9a6fd8 !important;
+  font-size: 13px !important;
+  padding-top: 16px !important;
+  border-top: 1px solid rgba(255,255,255,0.1) !important;
+  margin-top: 20px !important;
+}
+
+/* ── 5. BODY FONT — Slightly better reading experience ─── */
+body, p, li, td {
+  font-family: Arial, 'Helvetica Neue', sans-serif !important;
+  line-height: 1.75 !important;
+}
+h1, h2, h3, h4 {
+  font-family: Arial, 'Helvetica Neue', sans-serif !important;
+  line-height: 1.3 !important;
+}
+
+/* ── 6. NAVIGATION BAR — Ensure logo and links are clear ─ */
+.main-header-bar,
+.ast-site-header-wrap,
+.site-header {
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15) !important;
+}
+.main-navigation a,
+.ast-builder-menu a {
+  font-weight: 500 !important;
+  letter-spacing: 0.2px !important;
+}
+
+/* ── 7. STATS SECTION — Make icons match purple brand ───── */
+.elementor-icon-box-icon .elementor-icon svg,
+.elementor-icon svg {
+  fill: #7b2ff7 !important;
+}
+.elementor-icon-box-title {
+  color: #1a0533 !important;
+  font-weight: 600 !important;
+}
+
+/* ── 8. CARDS — Subtle shadow for depth ─────────────────── */
+.elementor-column .elementor-widget-wrap,
+.e-con-inner .elementor-widget-image-box {
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+.elementor-widget-image-box:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 24px rgba(58,12,163,0.12) !important;
+}
+
+/* ── 9. HERO HEADLINE — Sharper, more impact ────────────── */
+.elementor-widget-heading .elementor-heading-title {
+  text-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
+}
+
+/* ── 10. MOBILE FIXES — Padding and font size ───────────── */
+@media (max-width: 768px) {
+  .elementor-heading-title { font-size: 32px !important; line-height: 1.25 !important; }
+  .elementor-column { margin-bottom: 20px !important; }
+  .site-footer { padding: 30px 16px 16px !important; }
+}
+
+/* ── 11. DISCLAIMER TEXT — Better styling ───────────────── */
+.ast-copyright-text {
+  font-size: 12px !important;
+  line-height: 1.6 !important;
+  max-width: 800px !important;
+  margin: 0 auto !important;
+  text-align: center !important;
+}
+
+/* ── 12. SCROLL TO TOP BUTTON — Match brand ─────────────── */
+#scroll-to-top, .scrolltop-wrap a {
+  background-color: #7b2ff7 !important;
+  border-radius: 8px !important;
+}
